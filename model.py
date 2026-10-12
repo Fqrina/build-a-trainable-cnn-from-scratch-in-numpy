@@ -64,8 +64,8 @@ def gather_true_class_probs(probs, labels):
 import numpy as np
 
 def cross_entropy_loss(probs, labels, eps=1e-12):
-    mat = np.log10(probs*labels)
-    return -np.mean(mat, axis=1,keepdims=True)/len(labels)
+    mat = probs[np.arange(0, len(labels)), labels]
+    return np.mean(-np.log(mat+eps))
     # TODO: return the mean negative log-likelihood of the true-class probabilities
     pass
 
