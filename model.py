@@ -60,11 +60,21 @@ def gather_true_class_probs(probs, labels):
     # TODO: return probs[i, labels[i]] for every row i as a 1D length-N array.
     return probs[np.arange(len(probs)), labels]
 
-# Step 8 - cross_entropy_loss (not yet solved)
-# TODO: implement
+# Step 8 - cross_entropy_loss
+import numpy as np
 
-# Step 9 - accuracy (not yet solved)
-# TODO: implement
+def cross_entropy_loss(probs, labels, eps=1e-12):
+    mat = np.log10(probs*labels)
+    return -np.mean(mat, axis=1,keepdims=True)/len(labels)
+    # TODO: return the mean negative log-likelihood of the true-class probabilities
+    pass
+
+# Step 9 - accuracy
+def accuracy(logits_or_probs, labels):
+    # TODO: return the fraction of rows whose argmax matches the integer label.
+    pred=np.argmax(logits_or_probs, axis=1)
+    return np.mean(pred==labels)
+    pass
 
 # Step 10 - he_std (not yet solved)
 # TODO: implement
