@@ -143,8 +143,11 @@ def output_spatial_size(input_size, kernel, stride, padding):
 # Step 24 - maxpool2d_backward (not yet solved)
 # TODO: implement
 
-# Step 25 - relu_forward (not yet solved)
-# TODO: implement
+# Step 25 - relu_forward
+def relu_forward(x):
+    ans = np.maximum(0, x)
+    cache = {'x':x}
+    return ans, cache
 
 # Step 26 - relu_backward (not yet solved)
 # TODO: implement
