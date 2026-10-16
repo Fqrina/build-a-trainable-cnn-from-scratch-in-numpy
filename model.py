@@ -134,8 +134,37 @@ def output_spatial_size(input_size, kernel, stride, padding):
 # Step 21 - conv2d_backward (not yet solved)
 # TODO: implement
 
-# Step 22 - maxpool2d_forward (not yet solved)
-# TODO: implement
+# Step 22 - maxpool2d_forward
+def maxpool2d_forward(x, kernel, stride):
+    x = np.array(x)
+    height, width = x.shape[2], x.shape[3]
+    argms = []
+    outm = []
+    for data in range(x.shape[0]):
+        argchan = []
+        outdata = []
+        for channel in range(x.shape[1]):
+            argmax = [] 
+            out = []
+            for j in range(0, height-kernel+1, stride):
+                rw = []
+                rowval = []
+                for i in range(0, width-kernel+1, stride):
+                    mat = x[data, channel, j:j+kernel, i:i+kernel]
+                    argm = np.argmax(mat)
+                    val = np.max(mat)
+                    rw.append(argm)
+                    rowval.append(val)
+                argmax.append(rw)
+                out.append(rowval)
+            argchan.append(argmax)
+            outdata.append(out)
+        argms.append(argchan)
+        outm.append(outdata)
+
+    
+    cache = {"x_shape":x.shape, "kernel": kernel, "stride":stride, "argmax":np.array(argms)}
+    return np.array(outm), cache
 
 # Step 23 - scatter_grad_window (not yet solved)
 # TODO: implement
