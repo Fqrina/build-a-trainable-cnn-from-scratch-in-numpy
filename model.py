@@ -152,8 +152,11 @@ def relu_forward(x):
 # Step 26 - relu_backward (not yet solved)
 # TODO: implement
 
-# Step 27 - flatten_forward (not yet solved)
-# TODO: implement
+# Step 27 - flatten_forward
+def flatten_forward(x):
+    cache = {'x_shape': x.shape}
+    ans = x.reshape(x.shape[0], x.shape[1]*x.shape[2]*x.shape[3])
+    return ans, cache
 
 # Step 28 - flatten_backward (not yet solved)
 # TODO: implement
