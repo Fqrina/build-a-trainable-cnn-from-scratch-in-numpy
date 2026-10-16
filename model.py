@@ -161,8 +161,11 @@ def flatten_forward(x):
 # Step 28 - flatten_backward (not yet solved)
 # TODO: implement
 
-# Step 29 - linear_forward (not yet solved)
-# TODO: implement
+# Step 29 - linear_forward
+def linear_forward(x, weights, bias):
+    ans = x @ weights + bias
+    cache = {'weights':weights, "x":x}
+    return ans, cache
 
 # Step 30 - linear_grad_input (not yet solved)
 # TODO: implement
